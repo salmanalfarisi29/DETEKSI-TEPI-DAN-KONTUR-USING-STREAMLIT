@@ -10,10 +10,12 @@ def get_freeman_chain_code_sobel(img):
     # apply Sobel filter to get the edges
     sobelx = cv2.Sobel(gray, cv2.CV_64F, 1, 0, ksize=3)
     sobely = cv2.Sobel(gray, cv2.CV_64F, 0, 1, ksize=3)
-    edges = cv2.Sobel(sobelx, sobely, 50, 150)
+    # edges = cv2.Sobel(sobelx, sobely, 50, 150)
+    mag, angle = cv2.cartToPolar(sobelx, sobely, angleInDegrees=True)
+    _, thresh = cv2.threshold(mag, 50, 150, cv2.THRESH_BINARY)
 
     # get the contour
-    contours, hierarchy = cv2.findContours(edges, cv2.RETR_TREE, cv2.CHAIN_APPROX_SIMPLE)
+    contours,_= cv2.findContours(thresh, cv2.RETR_EXTERNAL, cv2.CHAIN_APPROX_SIMPLE)
 
     # get the largest contour
     largest_contour = max(contours, key=cv2.contourArea)
