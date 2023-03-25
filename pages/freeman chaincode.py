@@ -10,7 +10,7 @@ def get_freeman_chain_code_sobel(img):
     # apply Sobel filter to get the edges
     sobelx = cv2.Sobel(gray, cv2.CV_64F, 1, 0, ksize=3)
     sobely = cv2.Sobel(gray, cv2.CV_64F, 0, 1, ksize=3)
-    edges = cv2.Canny(sobelx, sobely, 50, 150)
+    edges = cv2.Sobel(sobelx, sobely, 50, 150)
 
     # get the contour
     contours, hierarchy = cv2.findContours(edges, cv2.RETR_TREE, cv2.CHAIN_APPROX_SIMPLE)
