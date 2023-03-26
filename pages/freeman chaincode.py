@@ -41,12 +41,12 @@ def find_freeman_chaincode(contour):
         chaincode.append(code)
     return chaincode
 
-def identify_digit(chaincode):
+def calculate_chain_code(chaincode):
     if len(contours) == 1:
         contour = contours[0]
         chaincode = find_freeman_chaincode(contour)
         st.write('Chain code:', chaincode)
-        digit = identify_digit(chaincode)
+        digit = calculate_chain_code(chaincode)
         if digit is not None:
             st.write('Identified digit:', digit)
         else:
@@ -82,7 +82,7 @@ def identify_digit(chaincode):
     for k, v in digit_map.items():
         if chaincode == k:
             return v
-    return "Tidak dikenali"
+    return ""
 
 
 
@@ -146,6 +146,10 @@ if uploaded_file is not None:
     contours = find_contours(preprocessed_image)
     st.write('Number of contours found:', len(contours))
 
+
+    for contour in contours:
+        chain_code = calculate_chain_code(contour)
+        st.write('Chain code:', chain_code)
 
 
     # # read the image using OpenCV
