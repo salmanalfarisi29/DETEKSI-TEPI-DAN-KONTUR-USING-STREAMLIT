@@ -44,7 +44,7 @@ if uploaded_file is not None:
     st.text("Hasil Konversi")
     st.image(np.hstack([cv2.cvtColor(img, cv2.COLOR_XYZ2BGR), rgb_img]))
     st.text("Diperbesar")
-    st.image(np.hstack([cv2.cvtColor(img, cv2.COLOR_XYZ2BGR), rgb_img]), width=800)
+    st.image(np.hstack([cv2.cvtColor(img, cv2.COLOR_XYZ2BGR), rgb_img]), width=80)
 
 else:
     st.warning("Silakan pilih citra terlebih dahulu")
@@ -80,7 +80,7 @@ def main():
         st.text("Hasil Konversi")
         st.image(hsv_img)
         st.text("Diperbesar")
-        st.image(hsv_img, width = 800)
+        st.image(hsv_img, width = 80)
 if __name__ == "__main__":
     main()
     
@@ -113,7 +113,7 @@ def main():
         st.text("Hasil Konversi")
         st.image(cmy_img)
         st.text("Diperbesar")
-        st.image(cmy_img, width=800)
+        st.image(cmy_img, width=80)
 
 if __name__ == "__main__":
     main()
@@ -153,7 +153,7 @@ def main():
         # Konversi citra ke format CIELab
         lab_img = xyz_to_lab(xyz_img)
         # Tampilkan citra dalam format CIELab
-        st.image(lab_img, width=800)
+        st.image(lab_img, width=80)
 
 if __name__ == "__main__":
     main()
